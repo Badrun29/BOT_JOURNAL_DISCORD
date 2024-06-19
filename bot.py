@@ -7,8 +7,8 @@ import json
 import datetime
 import mplfinance as mpf
 
-WEBHOOK_URL = 'WEBHOOK API LU '
-DATA_FILE = 'trading_data.json'
+WEBHOOK_URL = 'https://discord.com/api/webhooks/1252787899024408587/JBHuxPMz9Nsfn0dcH_Rpd02047rHrJmNF3RW48PL-uMVwPtajqmn9yacg_8GcVHOcFsS'
+DATA_FILE = 'https://raw.githubusercontent.com/Badrun29/BOT_JOURNAL_DISCORD/main/trading_data.json'
 
 def load_trade_journal():
     if os.path.exists(DATA_FILE):
