@@ -16,9 +16,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-WEBHOOK_URL = 'WEB HOOK'
+WEBHOOK_URL = 'https://discord.com/api/webhooks/1252787899024408587/JBHuxPMz9Nsfn0dcH_Rpd02047rHrJmNF3RW48PL-uMVwPtajqmn9yacg_8GcVHOcFsS'
 DATA_FILE = 'trading_data.json'
-BOT_TOKEN = 'TELE TOKEN'
+BOT_TOKEN = '7318642228:AAHSzxK2jp_8Lu1IDudKUCc4VEMLuCFD6kQ'
 
 SYMBOL, ACTION, PNL, TV_IDEA_LINK, CONFIRMATION = range(5)
 

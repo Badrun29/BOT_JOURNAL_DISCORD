@@ -1,1 +1,5 @@
-{"trades": [{"date": "2024-06-19", "symbol": "ETH", "action": "L", "pnl": 63.6848, "link": ""}], "start_balance": 3200}
+{
+    "trades": [],
+    "start_balance": 3000
+  }
+  
