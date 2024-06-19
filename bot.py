@@ -7,7 +7,7 @@ import json
 import datetime
 import mplfinance as mpf
 
-WEBHOOK_URL = 'https://discord.com/api/webhooks/1252787899024408587/JBHuxPMz9Nsfn0dcH_Rpd02047rHrJmNF3RW48PL-uMVwPtajqmn9yacg_8GcVHOcFsS'
+WEBHOOK_URL = 'WEBHOOK API LU '
 DATA_FILE = 'trading_data.json'
 
 def load_trade_journal():
@@ -58,7 +58,6 @@ def plot_pnl_graph(trades, start_balance):
     daily_pnls_dict = {date:[] for date in unique_dates}
     
     for date in unique_dates:
-        # Hitung PNL harian berdasarkan trade pada tanggal tersebut
         pnl_daily = sum(trade["pnl"] for trade in trades if trade["date"] == date)
         current_pnl += pnl_daily
         daily_pnls.append(current_pnl)
@@ -86,10 +85,8 @@ def send_to_discord(trades, start_balance):
     plot_pnl_graph(trades, start_balance)
     total_balance = start_balance + total_pnl
 
-    # Membuat pesan embed Discord
     embed = DiscordEmbed(title="JOURNAL REKT", color=242424)
 
-    # Menambahkan field sebagai tabel dalam pesan embed
     embed.set_author(name="Bot REKT", url="https://i.ytimg.com/vi/DCipyjzy9bs/maxresdefault.jpg", icon_url="https://i.ytimg.com/vi/DCipyjzy9bs/maxresdefault.jpg")
     embed.add_embed_field(name="**TOTAL PNL** 💰", value=f"${total_pnl:.2f}", inline=True)
     embed.add_embed_field(name="**WIN RATE** 📈", value=f"{win_rate:.2f}%", inline=True)
@@ -98,20 +95,16 @@ def send_to_discord(trades, start_balance):
     embed.add_embed_field(name="**SHORT** 📤", value=f"{total_sell}", inline=True)
     embed.add_embed_field(name="**TOTAL BALANCE** 💵", value=f"${total_balance:.2f}", inline=True)
 
-    # Mengirim gambar grafik PNL sebagai lampiran
     webhook = DiscordWebhook(url=WEBHOOK_URL, content='Here is the latest trading journal update:')
     with open("pnl_graph.png", "rb") as f:
         webhook.add_file(file=f.read(), filename='pnl_graph.png')
 
-    # Menetapkan gambar grafik sebagai gambar embed
     embed.set_image(url='attachment://pnl_graph.png')
     webhook.add_embed(embed)
     response = webhook.execute()
 
-    # Menghapus file grafik setelah dikirim
     os.remove('pnl_graph.png')
 
-    # Memeriksa respons webhook untuk memberikan umpan balik
     if response.status_code == 204:
         print("Pesan berhasil dikirim ke Discord")
     elif response.status_code == 200:

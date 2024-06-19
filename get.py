@@ -1,10 +1,10 @@
 import json
 from discord_webhook import DiscordWebhook, DiscordEmbed
 
-# URL webhook Discord untuk kanal yang berbeda
-WEBHOOK_URL = 'https://discord.com/api/webhooks/1252787799942496277/XsYLzd6nARRdP84_qsXNgxMVf1deQ5XbW2GOMpX-DPnSHC5KmlvY7DjKzPUBdrZ0me6o'
 
-# Nama file trading data
+WEBHOOK_URL = 'WEBHOOKAPI LU'
+
+
 DATA_FILE = 'trading_data.json'
 
 def load_trading_data():
@@ -36,7 +36,7 @@ def send_coin_pnl_to_discord(coin_pnl_list):
         print("Tidak ada data untuk dikirim ke Discord.")
         return
     
-    embed = DiscordEmbed(title="Trading Report", color=0x00ff00)  # Warna hijau untuk laporan trading
+    embed = DiscordEmbed(title="Trading Report", color=0x00ff00) 
     embed.set_author(name="Bot REKT", url="https://i.ytimg.com/vi/DCipyjzy9bs/maxresdefault.jpg", icon_url="https://i.ytimg.com/vi/DCipyjzy9bs/maxresdefault.jpg")
     embed.set_thumbnail(url="https://i.ytimg.com/vi/DCipyjzy9bs/maxresdefault.jpg")
     embed.set_footer(text="Bot REKT", icon_url="https://i.ytimg.com/vi/DCipyjzy9bs/maxresdefault.jpg")
@@ -56,12 +56,10 @@ def send_coin_pnl_to_discord(coin_pnl_list):
         print(f"Terjadi kesalahan: {response.status_code}, {response.text}")
 
 
-# Memuat data perdagangan dari file JSON
+
 trades = load_trading_data()
 
-# Mendapatkan daftar nama coin, pnl, dan link
 coin_pnl_list = get_coin_pnl(trades)
 
-# Hanya panggil fungsi sekali
 send_coin_pnl_to_discord(coin_pnl_list)
 
